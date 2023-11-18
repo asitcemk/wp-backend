@@ -7,15 +7,6 @@ const bodyParser = require('body-parser');
 var logger = require('morgan');
 const fileUpload = require('express-fileupload');
  
-
-// CORS middleware
-const allowCrossDomain = (req, res, next) => {
-  res.header(`Access-Control-Allow-Origin`, `example.com`);
-  res.header(`Access-Control-Allow-Methods`, `GET,PUT,POST,DELETE`);
-  res.header(`Access-Control-Allow-Headers`, `Content-Type`);
-  next();
-};
-
 // Initializations
 const app = express();
 
@@ -34,7 +25,12 @@ app.use(bodyParser.json())
 app.set('view engine', 'jade');
 
 // routes
-app.use(allowCrossDomain);
+app.all('/*', function(req, res, next) {
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With");
+  next();
+});
+
 require('./routes/index')(app);
 
 // catch 404 and forward to error handler
