@@ -107,7 +107,7 @@ internationalizationCtrl.update = (req, res) => {
     bengali: bengali,
     updatedAt: new Date()
   })
-    .then((internationalization) => res.status(200).send(internationalization))
+    .then((internationalization) => res.status(200).send({ message: "Internationalization updated successfully." }))
     .catch((error) => res.status(400).send({ errors: error }));
 };
 
