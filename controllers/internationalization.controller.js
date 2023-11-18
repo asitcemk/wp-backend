@@ -1,5 +1,5 @@
 const internationalizationCtrl = {};
-const Internationalization = require("../models/internationalization");
+const Internationalization = require("./../models/internationalization");
 
 internationalizationCtrl.save = async (req, res) => {
   const entry = await Internationalization.findOne({
