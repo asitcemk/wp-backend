@@ -19,13 +19,15 @@ app.use(logger('dev'));
 app.use(express.urlencoded({extended: false}));
 
 app.use(cookieParser());
-app.use(cors())
+//app.use(cors())
 app.use(fileUpload());
 app.use(bodyParser.json())
 app.set('view engine', 'jade');
 
 // routes
-app.options('*', cors());
+app.use(cors({
+  origin: "*",
+  }));
 
 require('./routes/index')(app);
 
