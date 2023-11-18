@@ -25,9 +25,7 @@ app.use(bodyParser.json())
 app.set('view engine', 'jade');
 
 // routes
-app.use(cors({
-  origin: "*",
-  }));
+app.use(cors({ origin: 'https://asit-wb.netlify.app' , credentials :  true,  methods: 'GET,PUT,POST,OPTIONS', allowedHeaders: 'Content-Type,Authorization' }));
 
 require('./routes/index')(app);
 
